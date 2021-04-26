@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/json/constant.dart';
+import 'package:online_shop/pages/home_page.dart';
 import 'package:online_shop/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -26,10 +27,7 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: activeTab,
       children: [
-        Center(
-          child: Text('Home',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-        ),
+        HomePage(),
         Center(
           child: Text('Store',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
@@ -53,16 +51,7 @@ class _RootAppState extends State<RootApp> {
   Widget getAppbar() {
     switch (activeTab) {
       case 0:
-        return AppBar(
-          elevation: 0.8,
-          backgroundColor: white,
-          title: Center(
-            child: Text(
-              'HOME',
-              style: TextStyle(color: black),
-            ),
-          ),
-        );
+        appBar = null;
         break;
       case 1:
         return AppBar(

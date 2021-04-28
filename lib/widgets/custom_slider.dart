@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:online_shop/theme/colors.dart';
 
 class CustomCarouselHomePage extends StatefulWidget {
@@ -30,6 +29,9 @@ class _CustomCarouselHomePageState extends State<CustomCarouselHomePage> {
           width: MediaQuery.of(context).size.width,
           //TODO: CarouselSlider dùng để chiếu slide ảnh
           child: CarouselSlider(
+              // onPageChanged: (index) {
+              //   setActiveDot(index);
+              // },
               items: widget.items.map((item) {
                 return Builder(
                   builder: (BuildContext context) {
@@ -38,9 +40,7 @@ class _CustomCarouselHomePageState extends State<CustomCarouselHomePage> {
                         Container(
                           width: MediaQuery.of(context).size.width,
                           child: Image(
-                            image: NetworkImage(item),
-                            fit: BoxFit.cover
-                          ),
+                              image: NetworkImage(item), fit: BoxFit.cover),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -52,13 +52,13 @@ class _CustomCarouselHomePageState extends State<CustomCarouselHomePage> {
                 );
               }).toList(),
               options: CarouselOptions(
-                viewportFraction: 1.0,
-                autoPlay: true,
                 autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(seconds: 2),
-                autoPlayCurve: Curves.fastLinearToSlowEaseIn,
-                onPageChanged: setActiveDot(activeIndex),
                 scrollDirection: Axis.horizontal,
+                autoPlay: true,
+                autoPlayCurve: Curves.fastLinearToSlowEaseIn,
+                autoPlayAnimationDuration: Duration(seconds: 2),
+                onPageChanged: setActiveDot(activeIndex),
+                viewportFraction: 1.0,
               )),
         ),
         Positioned(
@@ -67,8 +67,8 @@ class _CustomCarouselHomePageState extends State<CustomCarouselHomePage> {
           bottom: 10,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: List.generate(widget.items.length, (idx) {
-              return activeIndex == idx ? ActiveDot() : InactiveDot();
+            children: List.generate(widget.items.length, (index) {
+              return activeIndex == index ? ActiveDot() : InactiveDot();
             }),
           ),
         )
@@ -94,6 +94,7 @@ class ActiveDot extends StatelessWidget {
     );
   }
 }
+
 //TODO: InactiveDot
 class InactiveDot extends StatelessWidget {
   @override

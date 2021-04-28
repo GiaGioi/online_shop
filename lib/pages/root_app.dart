@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/json/constant.dart';
 import 'package:online_shop/pages/home_page.dart';
+import 'package:online_shop/pages/store_page.dart';
 import 'package:online_shop/theme/colors.dart';
 
 class RootApp extends StatefulWidget {
@@ -23,47 +24,41 @@ class _RootAppState extends State<RootApp> {
     );
   }
 
-  Widget getBody(){
+  Widget getBody() {
     return IndexedStack(
       index: activeTab,
       children: [
         HomePage(),
+        StorePage(),
         Center(
-          child: Text('Store',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+          child: Text(
+            'Account',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Center(
-          child: Text('Account',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+          child: Text(
+            'Cart',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Center(
-          child: Text('Cart',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-        ),
-        Center(
-          child: Text('More',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+          child: Text(
+            'More',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
       ],
     );
-
   }
+
   Widget getAppbar() {
     switch (activeTab) {
       case 0:
         appBar = null;
         break;
       case 1:
-        return AppBar(
-          elevation: 0.8,
-          backgroundColor: white,
-          title: Center(
-            child: Text(
-              'CART',
-              style: TextStyle(color: black),
-            ),
-          ),
-        );
+        appBar = null;
         break;
       case 2:
         return AppBar(

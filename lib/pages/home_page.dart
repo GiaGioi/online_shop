@@ -263,8 +263,7 @@ class _HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                                image:
-                                NetworkImage(recently[index]["imgUrl"]),
+                                image: NetworkImage(recently[index]["imgUrl"]),
                                 fit: BoxFit.cover))),
                     SizedBox(height: 5),
                     //TODO: Text and Price

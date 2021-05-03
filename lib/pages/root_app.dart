@@ -124,9 +124,19 @@ class _RootAppState extends State<RootApp> {
                     });
                   },
                 ),
-                Text(
-                  itemsTab[index]["text"],
-                  style: TextStyle(color: activeTab == index ? accent : black),
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      activeTab = index;
+                    });
+                  },
+                  child: Text(
+                    itemsTab[index]["text"],
+                    style: TextStyle(
+                      color: activeTab == index ? accent : black,
+                      fontSize: 13
+                    ),
+                  ),
                 ),
               ],
             );

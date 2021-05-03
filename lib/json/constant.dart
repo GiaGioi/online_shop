@@ -329,11 +329,11 @@ List menusMore = [
 ];
 
 List itemsTab = [
-  {"icon": Icons.home, "size": 28.0},
-  {"icon": FontAwesomeIcons.mapMarkerAlt, "size": 22.0},
-  {"icon": FontAwesomeIcons.userAlt, "size": 21.0},
-  {"icon": FontAwesomeIcons.shoppingBag, "size": 22.0},
-  {"icon": Icons.more_horiz, "size": 40.0},
+  {"icon": Icons.home, "size": 26.0, "text": "Home"},
+  {"icon": FontAwesomeIcons.mapMarkerAlt, "size": 20.0, "text": "Market"},
+  {"icon": FontAwesomeIcons.userAlt, "size": 19.0, "text": "Account"},
+  {"icon": FontAwesomeIcons.shoppingBag, "size": 20.0, "text": "Cart"},
+  {"icon": Icons.more_horiz, "size": 38.0, "text": "More"},
 ];
 
 List accountList = [

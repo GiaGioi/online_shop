@@ -1,6 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:online_shop/json/constant.dart';
+import 'package:online_shop/pages/account_page.dart';
+import 'package:online_shop/pages/cart_page.dart';
 import 'package:online_shop/pages/home_page.dart';
+import 'package:online_shop/pages/more_page.dart';
 import 'package:online_shop/pages/store_page.dart';
 import 'package:online_shop/theme/colors.dart';
 
@@ -30,36 +35,25 @@ class _RootAppState extends State<RootApp> {
       children: [
         HomePage(),
         StorePage(),
-        Center(
-          child: Text(
-            'Account',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Text(
-            'Cart',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Text(
-            'More',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
+        AccountPage(),
+        CartPage(),
+        MorePage(),
       ],
     );
   }
 
+  //TODO: AppBar
   Widget getAppbar() {
     switch (activeTab) {
+      //TODO: HOME
       case 0:
         appBar = null;
         break;
+      //  TODO: All Store
       case 1:
         appBar = null;
         break;
+      //  TODO: Account
       case 2:
         return AppBar(
           elevation: 0.8,
@@ -72,6 +66,7 @@ class _RootAppState extends State<RootApp> {
           ),
         );
         break;
+      //  TODO: Cart
       case 3:
         return AppBar(
           elevation: 0.8,
@@ -84,6 +79,7 @@ class _RootAppState extends State<RootApp> {
           ),
         );
         break;
+      //  TODO: More
       case 4:
         return AppBar(
           elevation: 0.8,
@@ -100,6 +96,7 @@ class _RootAppState extends State<RootApp> {
     }
   }
 
+  //TODO: Icon Bottom
   Widget getFooter() {
     return Container(
       height: 80,
@@ -107,22 +104,32 @@ class _RootAppState extends State<RootApp> {
           color: white,
           border: Border(top: BorderSide(color: grey.withOpacity(0.2)))),
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, top: 5),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(itemsTab.length, (index) {
-            return IconButton(
-                icon: Icon(
-                  itemsTab[index]['icon'],
-                  size: itemsTab[index]['size'],
-                  color: activeTab == index ? accent : black,
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    itemsTab[index]['icon'],
+                    size: itemsTab[index]['size'],
+                    color: activeTab == index ? accent : black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      activeTab = index;
+                    });
+                  },
                 ),
-                onPressed: () {
-                  setState(() {
-                    activeTab = index;
-                  });
-                });
+                Text(
+                  itemsTab[index]["text"],
+                  style: TextStyle(color: activeTab == index ? accent : black),
+                ),
+              ],
+            );
           }),
         ),
       ),
